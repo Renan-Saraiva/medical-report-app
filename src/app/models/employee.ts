@@ -1,5 +1,4 @@
 import { Skill } from './skill';
-import { isFormattedError } from '@angular/compiler';
 
 export class Employee {
     

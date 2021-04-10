@@ -18,6 +18,10 @@ import { SkillsNamePipe } from './pipes/skills-name.pipe';
 import { HospitalizationComponent } from './pages/hospitalization/hospitalization.component';
 import { ReportComponent } from './components/report/report.component';
 import { InteractionsTimelineComponent } from './components/interactions-timeline/interactions-timeline.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { InterationReportTimelineItemComponent } from './components/interation-report-timeline-item/interation-report-timeline-item.component';
+import { InterationMedicationTimelineItemComponent } from './components/interation-medication-timeline-item/interation-medication-timeline-item.component';
+import { InterationParametersMeasureTimelineItemComponent } from './components/interation-parameters-measure-timeline-item/interation-parameters-measure-timeline-item.component';
 
 const appConfig = (configService: ConfigService) => {
   return () => {
@@ -39,7 +43,11 @@ registerLocaleData(localePt, 'pt');
     SkillsNamePipe,
     HospitalizationComponent,
     ReportComponent,
-    InteractionsTimelineComponent
+    InteractionsTimelineComponent,
+    NotFoundComponent,
+    InterationReportTimelineItemComponent,
+    InterationMedicationTimelineItemComponent,
+    InterationParametersMeasureTimelineItemComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { InteractionType } from 'src/app/enums/interaction-type';
+import { InteractionsOnDate } from 'src/app/models/interactions-on-date';
+import { HospitalizationsService } from 'src/app/services/hospitalizations.service';
 
 @Component({
   selector: 'app-interactions-timeline',
@@ -7,9 +11,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InteractionsTimelineComponent implements OnInit {
 
-  constructor() { }
+  InteractionType = InteractionType;
+  InteractionsOnDate$: Observable<InteractionsOnDate[]>;
 
-  ngOnInit(): void {
+  @Input("hospitalization-id") hospitalizationId: string;
+
+  constructor(private hospitalizationsService: HospitalizationsService) { }
+
+  ngOnInit() {
+    this.getInteractions();
   }
 
+  getInteractions() {
+    this.InteractionsOnDate$ = this.hospitalizationsService.GetInteractionsGroupedByDate(this.hospitalizationId);
+  }
 }

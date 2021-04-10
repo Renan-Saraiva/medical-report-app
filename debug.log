@@ -1,2 +1,5 @@
 [0220/235048.257:ERROR:registration_protocol_win.cc(130)] TransactNamedPipe: O pipe foi finalizado. (0x6D)
 [0407/210733.254:ERROR:registration_protocol_win.cc(130)] TransactNamedPipe: O pipe foi finalizado. (0x6D)
+[0410/084025.072:ERROR:registration_protocol_win.cc(130)] TransactNamedPipe: O pipe foi finalizado. (0x6D)
+[0410/115230.186:ERROR:registration_protocol_win.cc(130)] TransactNamedPipe: O pipe foi finalizado. (0x6D)
+[0410/124208.112:ERROR:registration_protocol_win.cc(130)] TransactNamedPipe: O pipe foi finalizado. (0x6D)

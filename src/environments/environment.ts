@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   apiskills : "http://localhost:6100/api",
-  apiemployees: "http://localhost:5100/api"
+  apiemployees: "http://localhost:5100/api",
+  api: "http://localhost:5100/api"
 };
 
 /*
