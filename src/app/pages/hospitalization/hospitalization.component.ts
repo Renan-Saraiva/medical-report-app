@@ -11,6 +11,7 @@ import { HospitalizationsService } from 'src/app/services/hospitalizations.servi
 export class HospitalizationComponent implements OnInit {
 
   hospitalization: Hospitalization;
+  isLoading: boolean = true;
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router, private hospitalizationsService: HospitalizationsService) { }
 
@@ -24,8 +25,12 @@ export class HospitalizationComponent implements OnInit {
 
   getHospitalization(id: string) {
     this.hospitalizationsService.Get(id).subscribe(
-      hospitalization => this.hospitalization = hospitalization,
+      hospitalization => { 
+        this.hospitalization = hospitalization;
+        this.isLoading = false;
+      },
       err => {
+        this.isLoading = false;
         if (err.status == 404){
           this.router.navigate(['/not-found']);
         }

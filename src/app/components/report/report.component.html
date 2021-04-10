@@ -3,7 +3,7 @@
       <div class="col-12">
         <h4>
           Boletim médico
-          <small class="float-right"><b>Data de internação:</b> {{ hospitalization.entryAt | date:'dd/MM/yyyy' }}</small>
+          <small class="float-right"><b>Data de internação:</b> {{ hospitalization.entryAt | date: 'dd/MM/yyyy' }}</small>
         </h4>
       </div>
     </div>
@@ -37,10 +37,5 @@
         <div class="col-12">
             <app-interactions-timeline [hospitalization-id]="hospitalization.id"></app-interactions-timeline>
         </div>
-    </div>    
-    <div class="row no-print">
-      <div class="col-12">
-        <a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Imprimir</a>
-      </div>
     </div>
   </div>

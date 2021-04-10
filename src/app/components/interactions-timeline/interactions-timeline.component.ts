@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { toArray } from 'rxjs/operators';
+import { tap, toArray } from 'rxjs/operators';
 import { InteractionType } from 'src/app/enums/interaction-type';
 import { InteractionsOnDate } from 'src/app/models/interactions-on-date';
 import { HospitalizationsService } from 'src/app/services/hospitalizations.service';
@@ -12,8 +12,9 @@ import { HospitalizationsService } from 'src/app/services/hospitalizations.servi
 })
 export class InteractionsTimelineComponent implements OnInit {
 
+  hasInteractions: boolean = false;  
   InteractionType = InteractionType;
-  InteractionsOnDate$: Observable<InteractionsOnDate[]>;
+  InteractionsOnDate: InteractionsOnDate[] = [];
 
   @Input("hospitalization-id") hospitalizationId: string;
 
@@ -24,6 +25,12 @@ export class InteractionsTimelineComponent implements OnInit {
   }
 
   getInteractions() {
-    this.InteractionsOnDate$ = this.hospitalizationsService.GetInteractionsGroupedByDate(this.hospitalizationId);
+    this.hospitalizationsService
+        .GetInteractionsGroupedByDate(this.hospitalizationId)
+        .subscribe(
+          interactionsOnDate => { 
+            this.InteractionsOnDate = interactionsOnDate 
+          }
+        );
   }
 }

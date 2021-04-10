@@ -41,7 +41,7 @@ export class HospitalizationsService {
       updateAt: new Date()
     };
 
-    return of<Hospitalization>(mockData)
+    //return of<Hospitalization>(mockData)
 
     return this.httpClient.get<Hospitalization>(`${this.baseUrl}/${id}`)
       .pipe(
@@ -92,7 +92,7 @@ export class HospitalizationsService {
       ]
     };
 
-    return of<Interaction[]>([reportInteraction2, reportInteraction, reportInteraction3, reportInteraction, reportInteraction,  reportInteraction2, reportInteraction2]);
+    //return of<Interaction[]>([reportInteraction2, reportInteraction, reportInteraction3, reportInteraction, reportInteraction,  reportInteraction2, reportInteraction2]);
 
     return this.httpClient.get<Interaction[]>(`${this.baseUrl}/${id}/interactions`)
       .pipe(
@@ -108,14 +108,16 @@ export class HospitalizationsService {
                     interactions => from(interactions)
                   ),
                   groupBy(
-                    interaction => interaction.interactionAt
+                    interaction => {
+                      return interaction.interactionAt.toString().substring(0, 10);
+                    }
                   ),
                   mergeMap(group$ =>
                     group$.pipe(
                       reduce(
                         (acc, cur) => [...acc, cur], [group$.key]
                       ),
-                      map(array => new InteractionsOnDate(<Date>array[0], <Interaction[]>array.splice(1)))
+                      map(array => new InteractionsOnDate(new Date(<string>array[0]), <Interaction[]>array.splice(1)))
                     )
                   ),
                   toArray()

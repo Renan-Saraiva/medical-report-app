@@ -15,6 +15,8 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { InteractionReportTimelineItemComponent } from './components/interaction-report-timeline-item/interaction-report-timeline-item.component';
 import { InteractionMedicationTimelineItemComponent } from './components/interaction-medication-timeline-item/interaction-medication-timeline-item.component';
 import { InteractionParametersMeasureTimelineItemComponent } from './components/interaction-parameters-measure-timeline-item/interaction-parameters-measure-timeline-item.component';
+import { LoginComponent } from './pages/login/login.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 
 registerLocaleData(localePt, 'pt');
@@ -30,7 +32,9 @@ registerLocaleData(localePt, 'pt');
     NotFoundComponent,
     InteractionReportTimelineItemComponent,
     InteractionMedicationTimelineItemComponent,
-    InteractionParametersMeasureTimelineItemComponent
+    InteractionParametersMeasureTimelineItemComponent,
+    LoginComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
