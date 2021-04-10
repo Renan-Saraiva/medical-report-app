@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { toArray } from 'rxjs/operators';
 import { InteractionType } from 'src/app/enums/interaction-type';
 import { InteractionsOnDate } from 'src/app/models/interactions-on-date';
 import { HospitalizationsService } from 'src/app/services/hospitalizations.service';

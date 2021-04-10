@@ -1,10 +1,9 @@
 <div class="timeline">
-  <ng-container *ngFor="let interactionsInDate of InteractionsOnDate$ | async; index as index" >
+  <ng-container *ngFor="let interactionsInDate of (InteractionsOnDate$ | async); index as index" >
     <div class="time-label">
       <span [ngClass]="index == 0 ? 'bg-red' : 'bg-green'">{{ interactionsInDate.date | date: 'mediumDate'}}</span>
     </div>  
-    <div *ngFor="let interaction of interactionsInDate.interactions">
-
+    <div *ngFor="let interaction of interactionsInDate.interactions">        
       <ng-container *ngIf="interaction.type == InteractionType.Report">
         <i class="fas fa-user-md bg-blue" ></i>
         <div class="timeline-item">
@@ -41,22 +40,10 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Saturação</td>
-                  <td>95%</td>
-                </tr>
-                <tr>
-                  <td>Batimentos cardíaco</td>
-                  <td>84 bpm</td>
-                </tr>
-                <tr>
-                  <td>Temperatura corporal</td>
-                  <td>37,3º</td>
-                </tr>
-                <tr>
-                  <td>Pressão arterial</td>
-                  <td>13x8</td>
-                </tr>
+                <tr *ngFor="let parameter of interaction.parameters">
+                  <td>{{ parameter.parameter }}</td>
+                  <td>{{ parameter.value }}</td>
+                </tr>                
               </tbody>
             </table>
           </div>

@@ -62,17 +62,34 @@ export class HospitalizationsService {
     var reportInteraction3 = {
       id: "123",
       interactionAt: new Date(2020, 0, 11),
-      type: InteractionType.Report,
+      type: InteractionType.Medication,
       professionalName: "Dr. Fernandes",
-      report: "sadasdasdasdasddad"
+      medication: "sadasdasdasdasddad"
     };
 
     var reportInteraction = {
       id: "123",
       interactionAt: new Date(),
-      type: InteractionType.Report,
+      type: InteractionType.ParametersMeasure,
       professionalName: "Dr. Fernandes",
-      medication: "sadasdasdasdasddad"
+      parameters: [
+        {
+          parameter: "Saturação - teste",
+          value: "95%"
+        },
+        {
+          parameter: "Batimentos cardíaco",
+          value: "84 bpm"
+        },
+        {
+          parameter: "Temperatura corporal",
+          value: "37,3º"
+        },
+        {
+          parameter: "Pressão arterial",
+          value: "13x8"
+        }
+      ]
     };
 
     return of<Interaction[]>([reportInteraction2, reportInteraction, reportInteraction3, reportInteraction, reportInteraction,  reportInteraction2, reportInteraction2]);
@@ -98,11 +115,10 @@ export class HospitalizationsService {
                       reduce(
                         (acc, cur) => [...acc, cur], [group$.key]
                       ),
-                      map(array => new InteractionsOnDate(<Date>array[0], <Interaction[]>array.splice(1))),
-                      toArray()
+                      map(array => new InteractionsOnDate(<Date>array[0], <Interaction[]>array.splice(1)))
                     )
                   ),
-                  tap(ev => console.log(ev))
+                  toArray()
                 );
   }
 
