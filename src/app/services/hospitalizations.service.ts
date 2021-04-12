@@ -7,6 +7,7 @@ import { Hospitalization } from '../models/hospitalization';
 import { Interaction } from '../models/interaction';
 import { InteractionType } from '../enums/interaction-type';
 import { InteractionsOnDate } from '../models/interactions-on-date';
+import { Login } from '../models/login';
 
 @Injectable({
   providedIn: 'root'
@@ -100,7 +101,6 @@ export class HospitalizationsService {
       );
   }
 
-
   public GetInteractionsGroupedByDate(id: string): Observable<InteractionsOnDate[]> {
     return this.GetInteractions(id)
                 .pipe(
@@ -123,6 +123,16 @@ export class HospitalizationsService {
                   toArray()
                 );
   }
+
+  public Login(login: Login): Observable<string> {
+    console.log('servico', login)
+      return this.httpClient.post<string>(`${this.baseUrl}/login`, login)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {

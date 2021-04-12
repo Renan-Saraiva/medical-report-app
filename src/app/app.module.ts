@@ -17,6 +17,7 @@ import { InteractionMedicationTimelineItemComponent } from './components/interac
 import { InteractionParametersMeasureTimelineItemComponent } from './components/interaction-parameters-measure-timeline-item/interaction-parameters-measure-timeline-item.component';
 import { LoginComponent } from './pages/login/login.component';
 import { LoaderComponent } from './components/loader/loader.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 registerLocaleData(localePt, 'pt');
@@ -39,7 +40,8 @@ registerLocaleData(localePt, 'pt');
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [ { provide: LOCALE_ID, useValue: 'pt' }],
   bootstrap: [AppComponent]
