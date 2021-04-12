@@ -4,5 +4,12 @@
       <img src="assets/images/brand.png" alt="Bexs Forum" class="brand-image">
       <!-- <span class="brand-text font-weight-light">&nbsp; Medical Report</span> -->
     </a>
+    <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto" *ngIf="hospitalizationsService.isAuth">
+      <li class="nav-item" (click)='Logout()'>
+        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+          <i class="fas fa-sign-out-alt"></i>
+        </a>
+      </li>
+    </ul>
   </div>
 </nav>

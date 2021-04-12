@@ -7,9 +7,9 @@
                   <div class="card-body login-card-body">
                       <p class="login-box-msg">Digita aqui os dados de acesso</p>
 
-                      <form [formGroup]="loginForm">
+                      <form [formGroup]="loginForm" (submit)="doLogin()">
                           <div class="input-group mb-3">
-                              <input type="email" class="form-control" formControlName="protocol" placeholder="Protocolo">
+                              <input type="email" class="form-control" formControlName="protocol" placeholder="Protocolo" required>
                               <div class="input-group-append">
                                   <div class="input-group-text">
                                       <span class="fas fa-align-center"></span>
@@ -17,7 +17,7 @@
                               </div>
                           </div>
                           <div class="input-group mb-3">
-                              <input type="password" class="form-control" formControlName="password" placeholder="Senha">
+                              <input type="password" class="form-control" formControlName="password" placeholder="Senha" required>
                               <div class="input-group-append">
                                   <div class="input-group-text">
                                       <span class="fas fa-lock"></span>
@@ -26,9 +26,15 @@
                           </div>
                           <div class="row">
                               <div class="col-8">
+                                  <span class="text-danger" *ngIf="isInvalid">Login ou senha inválido.</span>
                               </div>
                               <div class="col-4">
-                                  <button type="submit" class="btn btn-primary btn-block" (click)='doLogin()'>Entrar</button>
+                                  <button type="submit" class="btn btn-primary btn-block" [disabled]="loginForm.invalid">
+                                      <span  *ngIf="!isLoad">Entrar</span>
+                                      <span  *ngIf="isLoad">
+                                          <i class="fas fa fa-sync-alt fa-spin"></i>
+                                      </span>
+                                  </button>
                               </div>
                           </div>
                       </form>

@@ -16,6 +16,11 @@ export class HospitalizationComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private router: Router, private hospitalizationsService: HospitalizationsService) { }
 
   ngOnInit() {
+
+    if(!this.hospitalizationsService.isAuth) {
+      this.router.navigate(['/login']);
+    }
+
     this.activatedRoute.params.subscribe(
       params => {
         this.getHospitalization(params["id"]);

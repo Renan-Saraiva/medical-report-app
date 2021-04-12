@@ -15,6 +15,7 @@ import { Login } from '../models/login';
 export class HospitalizationsService {
 
   private baseUrl: string;
+  public isAuth: boolean = false;
 
   constructor(private httpClient: HttpClient) {
     this.baseUrl = `${environment.api}/hospitalizations`
@@ -125,11 +126,11 @@ export class HospitalizationsService {
   }
 
   public Login(login: Login): Observable<string> {
-    console.log('servico', login)
       return this.httpClient.post<string>(`${this.baseUrl}/login`, login)
-      .pipe(
-        catchError(this.handleError)
-      );
+        .pipe(
+          tap(() => this.isAuth = true),
+          catchError(this.handleError)
+        );
   }
 
 
